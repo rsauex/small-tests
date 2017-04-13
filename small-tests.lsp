@@ -45,7 +45,9 @@ the test is concidered as failing, otherwise as passing."
     (when failed
       (format t "~%~% Failed tests:~%")
       (dolist (test (reverse failed))
-        (format t "~A::~A~%" (package-name (symbol-package test)) test)))))
+        (format t "~A::~A~%" (package-name (symbol-package test)) test))
+      (return-from run-test nil))
+    t))
 
 ;; (defun replace-in-tree (lst &key (old (error "Supply OLD argument to REPLACE-IN-TREE function"))
 ;;                               (new (error "Supply NEW argument to REPLACE-IN-TREE function"))
